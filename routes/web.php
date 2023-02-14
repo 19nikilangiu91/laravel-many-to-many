@@ -19,3 +19,7 @@ use App\Http\Controllers\MainController;
 // Home Route
 Route::get('/', [MainController::class, 'home'])
     ->name('home');
+
+// Create Route
+Route::get('/product/create', [MainController::class, 'productCreate'])
+    ->name('product.create');

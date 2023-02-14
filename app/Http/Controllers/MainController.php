@@ -15,4 +15,10 @@ class MainController extends Controller
 
         return view('pages.home', compact('categories'));
     }
+
+    // Create Route
+    public function productCreate()
+    {
+        return view('pages.product.create');
+    }
 }
