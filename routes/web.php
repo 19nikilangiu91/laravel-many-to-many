@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+// Importo il "MainController".
+use App\Http\Controllers\MainController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +16,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [MainController::class, 'home'])
+    ->name('home');
