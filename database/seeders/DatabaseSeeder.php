@@ -12,13 +12,13 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
+
+    // 7) Richiamo il "CategorySeeder" nel DBSeeder
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call([
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+            CategorySeeder::class,
+        ]);
     }
 }
