@@ -26,7 +26,17 @@ class MainController extends Controller
     public function productStore(Request $request)
     {
         // 18) Prova di ricezione dati al submit "Create New Product"
-        $data = $request->all();
+        // $data = $request->all();
+
+        // dd($data);
+
+        // 19) Convalido i dati
+        $data = $request->validate([
+            'name' => 'required|string|max:64',
+            'description' => 'nullable|string',
+            'price' => 'required|integer',
+            'weight' => 'required|integer',
+        ]);
 
         dd($data);
     }
