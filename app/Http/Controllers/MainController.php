@@ -21,4 +21,13 @@ class MainController extends Controller
     {
         return view('pages.product.create');
     }
+
+    // Store Route
+    public function productStore(Request $request)
+    {
+        // 18) Prova di ricezione dati al submit "Create New Product"
+        $data = $request->all();
+
+        dd($data);
+    }
 }

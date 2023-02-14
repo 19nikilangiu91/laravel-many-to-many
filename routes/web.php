@@ -23,3 +23,7 @@ Route::get('/', [MainController::class, 'home'])
 // Create Route
 Route::get('/product/create', [MainController::class, 'productCreate'])
     ->name('product.create');
+
+// Store Route
+Route::post('/product/create', [MainController::class, 'productStore'])
+    ->name('product.store');

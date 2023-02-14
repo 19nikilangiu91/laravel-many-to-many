@@ -4,7 +4,7 @@
 {{-- 17) Creao il form per "Creare un nuovo Prodotto" --}}
 <div class="container">
     <h1>Create New Product</h1>
-    <form method="POST">
+    <form action="{{route('product.store')}}" method="POST">
         @csrf
         <label for="name">Name</label>
         <input type="text" name="name">
