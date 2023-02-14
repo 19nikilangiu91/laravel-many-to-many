@@ -25,6 +25,14 @@ class MainController extends Controller
         return view('pages.home', compact('categories'));
     }
 
+    // 24) Product Route
+    public function products()
+    {
+        $products = Product::all();
+
+        return view('pages.product.home', compact('products'));
+    }
+
     // Create Route
     public function productCreate()
     {
@@ -55,11 +63,11 @@ class MainController extends Controller
         // 20b) Dichiaro il $code per non causare rotture con il DB.
         $code = rand(10000, 99999);
         $data['code'] = $code;
-        dd($data);
+        // dd($data);
 
         // 21) Creo un nuovo "Product"
         $product = Product::make($data);
-        dd($product);
+        // dd($product);
 
         // 23)Recupero "Typology" dal DB (Richiama il punto 12 (FK) in ProductSeeder)
         $typology = Typology::find($data['typology_id']);
@@ -67,5 +75,7 @@ class MainController extends Controller
         $product->typology()->associate($typology);
         // Salvo l'elemento in DB
         $product->save();
+
+        return redirect()->route('product.home');
     }
 }
