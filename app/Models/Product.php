@@ -18,4 +18,15 @@ class Product extends Model
         'price',
         'weight',
     ];
+
+    // 10b) Dichiaro la relazione per la Tabella Ponte "Category"
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
+    // 11b) Dichiaro la relazione indiretta tra "Product" e "Typology"
+    public function typology()
+    {
+        return $this->belongsTo(Typology::class);
+    }
 }

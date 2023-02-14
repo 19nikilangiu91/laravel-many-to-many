@@ -16,4 +16,10 @@ class Typology extends Model
         'name',
         'digital',
     ];
+
+    // 11a) Dichiaro la relazione diretta tra "Typology" e "Product"
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

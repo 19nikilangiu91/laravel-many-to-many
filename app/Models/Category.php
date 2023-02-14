@@ -16,4 +16,10 @@ class Category extends Model
         'name',
         'description',
     ];
+
+    // 10a) Dichiaro la relazione per la Tabella Ponte "Product"
+    public function products()
+    {
+        return $this->belongsToMany(Product::class);
+    }
 }
