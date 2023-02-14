@@ -28,6 +28,7 @@ class MainController extends Controller
     // 24) Product Route
     public function products()
     {
+
         $products = Product::all();
 
         return view('pages.product.home', compact('products'));
@@ -38,15 +39,17 @@ class MainController extends Controller
     {
         // 22a) Creo $typologies all'interno della funzione per crearmi anche le tipologie
         $typologies = Typology::all();
+        // 25a) Aggiungo tutti i "Category"
+        $categories = Category::all();
 
-        return view('pages.product.create', compact('typologies'));
+        return view('pages.product.create', compact('categories', 'typologies'));
     }
 
     // Store Route
     public function productStore(Request $request)
     {
         // 18) Prova di ricezione dati al submit "Create New Product"
-        // $data = $request->all();
+        $data = $request->all();
 
         // dd($data);
 
@@ -58,6 +61,8 @@ class MainController extends Controller
             'weight' => 'required|integer',
             // 22c)Inserisco il 'typology_id'
             'typology_id' => 'required|integer',
+            // 25c)Inserisco il 'categories'
+            'categories' => 'required|array'
         ]);
 
         // 20b) Dichiaro il $code per non causare rotture con il DB.
@@ -76,6 +81,10 @@ class MainController extends Controller
         // Salvo l'elemento in DB
         $product->save();
 
-        return redirect()->route('product.home');
+        // 25d)Recupero "Category" dal DB (Richiama il punto 14 (N a M) in ProductSeeder)
+        $categories = Category::find($data['categories']);
+        $product->categories()->attach($categories);
+
+        return redirect()->route('home', 'product.home');
     }
 }

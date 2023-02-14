@@ -25,6 +25,14 @@
             @endforeach
         </select>
         <br>
+        <h3>Categories</h3>
+        {{-- 25b) Creo un foreach per stampare le categorie e nella value inserisco la chiave primaria --}}
+        @foreach ($categories as $category)
+            <input type="checkbox" name="categories[]" value={{ $category -> id }}>
+            <label for="categories">{{ $category -> name }}</label>
+            <br>            
+        @endforeach
+        <br>
         <input type="submit" value="Create New Product">
     </form>
 </div>
