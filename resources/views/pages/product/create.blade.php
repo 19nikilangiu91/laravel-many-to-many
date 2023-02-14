@@ -18,6 +18,13 @@
         <label for="weight">Weight</label>
         <input type="number" name="weight">
         <br>
+        {{-- 22b) Creo un foreach per stampare le tipologie e nella value inserisco la chiave primaria --}}
+        <select name="typology_id">
+            @foreach ($typologies as $typology)
+                <option value="{{ $typology -> id }}">{{ $typology -> name }}</option>    
+            @endforeach
+        </select>
+        <br>
         <input type="submit" value="Create New Product">
     </form>
 </div>

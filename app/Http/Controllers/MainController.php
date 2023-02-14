@@ -12,6 +12,9 @@ use App\Models\Category;
 // Importo il model "Product"
 use App\Models\Product;
 
+// Importo il model "Typology"
+use App\Models\Typology;
+
 class MainController extends Controller
 {
     // Home Route
@@ -25,7 +28,10 @@ class MainController extends Controller
     // Create Route
     public function productCreate()
     {
-        return view('pages.product.create');
+        // 22a) Creo $typologies all'interno della funzione per crearmi anche le tipologie
+        $typologies = Typology::all();
+
+        return view('pages.product.create', compact('typologies'));
     }
 
     // Store Route
@@ -42,6 +48,8 @@ class MainController extends Controller
             'description' => 'nullable|string',
             'price' => 'required|integer',
             'weight' => 'required|integer',
+            // 22c)Inserisco il 'typology_id'
+            'typology_id' => 'required|integer',
         ]);
 
         // 20b) Dichiaro il $code per non causare rotture con il DB.
@@ -52,5 +60,12 @@ class MainController extends Controller
         // 21) Creo un nuovo "Product"
         $product = Product::make($data);
         dd($product);
+
+        // 23)Recupero "Typology" dal DB (Richiama il punto 12 (FK) in ProductSeeder)
+        $typology = Typology::find($data['typology_id']);
+        // Associo l'elemento
+        $product->typology()->associate($typology);
+        // Salvo l'elemento in DB
+        $product->save();
     }
 }
