@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
-    <!-- Usando Vite -->
+    <!-- Importo Vite -->
     @vite(['resources/js/app.js'])
 
     @yield('head')
