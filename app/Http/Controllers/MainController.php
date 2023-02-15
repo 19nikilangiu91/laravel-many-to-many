@@ -87,4 +87,14 @@ class MainController extends Controller
 
         return redirect()->route('home', 'product.home');
     }
+
+    // Delete Route 
+    public function productDelete(Product $product)
+    {
+
+        $product->categories()->sync([]);
+        $product->delete();
+
+        return redirect()->route('home');
+    }
 }

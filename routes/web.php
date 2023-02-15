@@ -31,3 +31,7 @@ Route::get('/product/create', [MainController::class, 'productCreate'])
 // Store Route
 Route::post('/product/create', [MainController::class, 'productStore'])
     ->name('product.store');
+
+// Delete Route 
+Route::get('/product/delete/{product}', [MainController::class, 'productDelete'])
+    ->name('product.delete');
