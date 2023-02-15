@@ -5,5 +5,6 @@
         <h5 class="d-inline">Typology: </h5> {{ $product -> typology -> name }}<br>
         <h5 class="d-inline">Digital: </h5>{{ $product -> typology -> digital ? "YES" : "NO" }}<br>
     </div>
-    <a href="{{ route('product.delete', $product) }}">Delete</a>
+    <a href="{{ route('product.delete', $product) }}">Delete</a> - 
+    <a href="{{ route('product.edit', $product) }}">Edit</a>
 </li>

@@ -97,4 +97,14 @@ class MainController extends Controller
 
         return redirect()->route('home');
     }
+
+    // Edit Route
+    public function productEdit(Product $product)
+    {
+
+        $typologies = Typology::all();
+        $categories = Category::all();
+
+        return view('pages.product.edit', compact('product', 'typologies', 'categories'));
+    }
 }

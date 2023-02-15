@@ -35,3 +35,7 @@ Route::post('/product/create', [MainController::class, 'productStore'])
 // Delete Route 
 Route::get('/product/delete/{product}', [MainController::class, 'productDelete'])
     ->name('product.delete');
+
+// Edit Route
+Route::get('/product/edit/{product}', [MainController::class, 'productEdit'])
+    ->name('product.edit');
