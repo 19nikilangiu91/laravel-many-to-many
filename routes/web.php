@@ -39,3 +39,7 @@ Route::get('/product/delete/{product}', [MainController::class, 'productDelete']
 // Edit Route
 Route::get('/product/edit/{product}', [MainController::class, 'productEdit'])
     ->name('product.edit');
+
+// Update Route
+Route::post('/product/edit/{product}', [MainController::class, 'productUpdate'])
+    ->name('product.update');

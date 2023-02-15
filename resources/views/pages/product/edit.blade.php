@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h1 class="d-inline">Update Product:</h1><h3 class="d-inline"> {{ $product -> code }}</h3>
-    <form method="POST">
+    <form action="{{ route('product.update', $product) }}" method="POST">
         @csrf
         <label for="name">Name</label>
         <input type="text" name="name" value="{{ $product -> name }}">
